@@ -1,0 +1,28 @@
+<section class="p-4 rounded-3" *ngIf="products.length>0">
+    <input type="search" class="form-control w-50 mx-auto m-2"  [(ngModel)]="searchvalue" placeholder="Search...">
+    <div class="row g-4">
+        <div class="col-lg-2 col-md-4 col-sm-6 cursor-pointer" *ngFor="let item of products | search: searchvalue">
+            <div class="product p-2">
+                <div class="d-flex justify-content-end">
+                    <button *ngIf="!wishList.includes(item._id)" class="btn mt-1" (click)="addToWichList(item._id)"><i class="fa-regular fa-heart fa-2x h3"></i></button>
+                    <button *ngIf="wishList.includes(item._id)" class="btn mt-1" (click)="removeProuWichList(item.id)"><i class="fa-solid fa-heart text-danger fa-2x h3"></i></button>
+                   </div>
+                <div [routerLink]="['/details',item._id]">
+                    <img [src]="item.imageCover" [alt]="item.title" class="w-100">
+                <h1 class="h6">{{item.category.name}}</h1>
+                <h2 class="h6">{{item.title.split(' ').slice(0,2).join(' ')}}</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>{{item.price}} EGP</span>
+                    <div>
+                        <i [class.rating-color]="item.ratingsAverage>=num" *ngFor="let num of [1,2,3,4,5]" class="fas fa-star"></i>
+                        <span class="mx-1">{{item.ratingsAverage}}</span>
+                    </div>
+                </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <button class="btn-main w-100" (click)="addbutton(item._id)">Add Product</button>
+                </div>           
+             </div>
+        </div>
+    </div>
+</section>

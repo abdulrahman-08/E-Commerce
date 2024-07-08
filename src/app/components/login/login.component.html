@@ -1,0 +1,28 @@
+<section class="bg-main-light p-4 rounded my-5 w-75 mx-auto">
+    <h1>Login Now</h1>
+
+    <form [formGroup]="loginform" (ngSubmit)="setlogin()">
+<div class="mb-2">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" formControlName="email" #email>
+    <div class="alert alert-danger" *ngIf="(loginform.get('email')?.touched||email.value.length>0)&&loginform.get('email')?.errors" >
+        <p *ngIf="loginform.get('email')?.getError('required')">email is required</p>
+        <p *ngIf="loginform.get('email')?.getError('email')">email pattern is inavalid</p>
+    </div>
+</div>
+<div class="mb-2">
+    <label for="password">password</label>
+    <input type="password" class="form-control" formControlName="password" #password>
+    <div class="alert alert-danger" *ngIf="(loginform.get('password')?.touched||password.value.length>0)&&loginform.get('password')?.errors" >
+        <p *ngIf="loginform.get('password')?.getError('required')">password is required</p>
+        <p *ngIf="loginform.get('password')?.getError('pattern')">password pattern is inavalid</p>
+    </div>
+</div>
+<div class="d-flex justify-content-between align-items-center">
+    <p routerLink="/forget-password" class="forget h5">forget your password ?</p>
+    <button  class="btn-main ms-auto d-block"> <i *ngIf="spincheak" class="fas fa-spin fa-spinner"></i>Login</button>
+
+</div>
+<p *ngIf="mserror" class="alert alert-danger ">{{mserror}}</p>
+    </form>
+</section>

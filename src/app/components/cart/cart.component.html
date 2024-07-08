@@ -1,0 +1,35 @@
+<section class="bg-main-light w-75 mx-auto m-2 rounded-3 py-5">
+    <div class="px-2 ">
+        <div class="d-flex justify-content-between align-items-center p-2 mx-2">
+            <h1>Shop Cart</h1>
+            <button  *ngIf="cartitem.products.length>0"class="btn-main bg-danger d-block ms-auto" (click)="clearCartUser()">Clear Your Cart</button>
+        </div>
+        <h2  *ngIf="cartitem.products.length<1" >Your cart is empty</h2>
+        <div  *ngIf="cartitem.products.length>0"  class="d-flex justify-content-between align-items-center p-2 mx-2">
+            <p ><span class="fw-bolder">Total Price: </span> <span class="text-main">{{cartitem.totalCartPrice|currency:' EGP '}}</span></p>
+            <p><span class="fw-bold">Total Number Of Items: </span> <span class="text-main">{{cartitem.products.length}}</span></p>
+        </div>
+    </div>
+    <div  class="row py-3 m-2 border-bottom" *ngFor="let item of cartitem.products" >
+        <div class="col-md-1"  *ngIf="cartitem.products.length>0"  >
+        <img [src]="item.product.imageCover" [alt]="item.product.title" class="w-100">
+        </div>
+        <div class="col-md-11">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h4">{{item.product.title}}</h1>
+                    <p class="text-main m-0 p-0">Price: {{item.price|currency:' EGP '}}</p>
+                    <button (click)="removeitem(item.product._id)" class="btn btn-sm m-0 p-0 text-danger"><i class="fa fa-trash"></i> Remove</button>
+    
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button class="border border-success" (click)="updatecount(item.product._id,item.count+1)">+</button>
+                    <span class="m-2">{{item.count}}</span>
+                    <button class="border border-success" [disabled]="item.count==0" (click)="updatecount(item.product._id,item.count-1)">-</button>
+
+                </div>    
+            </div>
+        </div>
+    </div>
+    <button [routerLink]="['/checkout',cartitem._id]" *ngIf="cartitem.products.length>0"  class="btn-main text-white m-2 p-1 d-block mx-auto">Online Payment<img src="./assets/images/visa-1.svg" alt=""> </button>
+</section>

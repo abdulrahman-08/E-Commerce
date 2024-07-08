@@ -1,0 +1,30 @@
+:root {
+    --main-color: #0aad0a
+  }
+
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    
+}
+.mainsection{
+    padding-top: 70px;
+}
+.btn-up{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+    font-size: 20px;
+}

@@ -1,0 +1,28 @@
+<section class="bg-main-light w-75 p-5 mx-auto m-3 rounded-3">
+    <form [formGroup]="checkOutForm" (ngSubmit)="pay()">
+    <div>
+        <label  for="Details">Details</label>
+        <input type="text" class="form-control my-2" formControlName="Details" id="Details">
+        <div class="alert alert-danger" *ngIf="checkOutForm.get('Details')?.errors&&(checkOutForm.get('Details')?.touched)">
+            <p *ngIf="checkOutForm.get('Details')?.getError('required')">Details is Required</p>
+            </div>
+    </div>
+    <div>
+        <label  for="Phone">Phone</label>
+        <input type="tel" class="form-control my-2" id="Phone" formControlName="Phone">
+        <div class="alert alert-danger" *ngIf="checkOutForm.get('Phone')?.errors&&(checkOutForm.get('Phone')?.touched)">
+            <p *ngIf="checkOutForm.get('Phone')?.getError('required')">Phone is Required</p>
+            <p *ngIf="checkOutForm.get('Phone')?.getError('pattern')">Phone in Valid</p>
+            </div>
+    </div>
+    <div>
+        <label  for="city">city</label>
+        <input type="text" class="form-control my-2" id="city" formControlName="city" >
+        <div class="alert alert-danger" *ngIf="checkOutForm.get('city')?.errors&&(checkOutForm.get('city')?.touched)">
+            <p *ngIf="checkOutForm.get('city')?.getError('required')">city is Required</p>
+            </div>
+    </div>   
+
+    <button [disabled]="checkOutForm.invalid" class="btn btn-outline-info w-100 my-5">Puy Now</button>
+    </form>
+</section>

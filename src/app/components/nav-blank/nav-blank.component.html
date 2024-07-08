@@ -1,0 +1,72 @@
+<nav #navBar class="navbar navbar-expand-lg bg-body-tertiary fixed-top z-2">
+    <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home"><img src="./assets/images/freshcart-logo.svg" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="home" routerLinkActive="active-link">Home</a>
+        </li>
+       
+       
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="products" routerLinkActive="active-link">Products</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="Categories" routerLinkActive="active-link">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="brands" routerLinkActive="active-link">Brands</a>
+        </li>
+        
+    
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+            <li class="nav-item">
+                <a class="nav-link active position-relative" aria-current="page" routerLink="cart" >
+                    <i class="fas fa-cart-shopping fa-2x text-main"></i>
+                    <span class="badge position-absolute top-0 end-0 bg-info">{{cartCount}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active position-relative" aria-current="page" routerLink="wichlist">
+                    <i class="fa-solid fa-heart fa-2x text-danger"></i>
+                    <span class="badge bg-info position-absolute top-0 end-0">{{wishCount}}</span>
+                </a>
+            </li>
+            <div class="dropdown-center">
+                <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" routerLink="updateUserData">update User Data</a></li>
+                  <li><a class="dropdown-item" routerLink="change-password">change Password</a></li>
+                </ul>
+              </div>
+            <li class="nav-item">
+                <a class="nav-link" > <i class="fab fa-instagram"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ><i class="fab fa-facebook"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" > <i class="fab fa-tiktok"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" >  <i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" >  <i class="fab fa-linkedin"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ><i class="fab fa-youtube"></i></a>
+            </li>
+            <li class="nav-item">
+            <span class="cursor-pointer nav-link" (click)="logout()">Sign Out</span>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>
